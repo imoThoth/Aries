@@ -1,10 +1,12 @@
 package com.Pantheon.aries.Repository;
 
 import com.Pantheon.aries.Exceptions.EtAuthException;
+import com.Pantheon.aries.Model.EndUser;
 import org.jasypt.util.password.BasicPasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
@@ -22,7 +24,7 @@ public abstract class UserRepositoryImpl implements UserRepository {
 
   //  private static final String SQL_COUNT_BY_EMAIL = "SELECT * FROM ET_USERS WHERE EMAIL = $1;";
 
-   // private static final String SQL_FIND_BY_ID = "SELECT * FROM ET_USERS WHERE USER_ID =$1;";
+    private static final String SQL_FIND_BY_ID = "SELECT * FROM ET_USERS WHERE USER_ID =$1;";
 
   //  private static final String SQL_FIND_BY_EMAIL = "SELECT * FROM ET_USERS WHERE EMAIL = $1;";
 
@@ -80,17 +82,17 @@ public abstract class UserRepositoryImpl implements UserRepository {
 //                //queryForObject(SQL_COUNT_BY_EMAIL, new Object[]{email}, Integer.class);
 //    }
 
-//    @Override
-//    public EndUser findById(Integer id) {
-//        return jdbcTemplate.queryForObject(SQL_FIND_BY_ID, new Object[]{id} ,userRowMapper);
-//    }
+    @Override
+    public EndUser findById(Integer id) {
+        return jdbcTemplate.queryForObject(SQL_FIND_BY_ID, new Object[]{id} ,userRowMapper);
+    }
 
-//
-//    private final RowMapper<EndUser> userRowMapper = ((rs, rowNum) -> new EndUser(rs.getInt("USER_ID"),
-//                        rs.getString("FIRST_NAME"),
-//                        rs.getString("LAST_NAME"),
-//                        rs.getString("EMAIL"),
-//                    rs.getString("PASSWORD")));
+
+    private final RowMapper<EndUser> userRowMapper = ((rs, rowNum) -> new EndUser(rs.getInt("USER_ID"),
+                        rs.getString("FIRST_NAME"),
+                        rs.getString("LAST_NAME"),
+                        rs.getString("EMAIL"),
+                    rs.getString("PASSWORD")));
 
 
 }

@@ -25,8 +25,8 @@ public class UserServiceImpl implements UserService{
        // Integer count = userRepository.getCountByEmail(email); //call method to check emails existence
        // if(count > 0) throw new EtAuthException("Email is already in use"); //throw exception if email exist
         Integer userId = userRepository.create(firstName, lastName, email, password); //creates the user
-//        return userRepository.findById(userId); //return newly created user id
-        return null;
+        return userRepository.findById(userId); //return newly created user id
+//        return null;
     }
 
     //
