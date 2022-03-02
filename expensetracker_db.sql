@@ -1,10 +1,10 @@
-drop database expensetrackerdb;
-drop user expensetracker;
-create user expensetracker with password 'password';
-create database expensetrackerdb with template=template0 owner=expensetracker;
+drop database dfp4f6l1hjchmf;
+drop user fcilyucvkvriwf;
+create user fcilyucvkvriwf with password '9f12ae2911d703b831d7cf8193a4720dffa40f0f0051457b95d0dacf57b413ae';
+create database dfp4f6l1hjchmf with template=template0 owner=fcilyucvkvriwf;
 \connect expensetrackerdb;
-alter default privileges grant all on tables to expensetracker;
-alter default privileges grant all on sequences to expensetracker;
+alter default privileges grant all on tables to fcilyucvkvriwf;
+alter default privileges grant all on sequences to fcilyucvkvriwf;
 
 create table et_users(
     user_id integer primary key not null,
