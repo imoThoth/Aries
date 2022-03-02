@@ -13,14 +13,8 @@ import java.util.regex.Pattern;
 @Transactional
 public class UserServiceImpl implements UserService{
 
-        @Autowired UserRepository userRepository;
-//
-//    @Override
-//    public EndUser validateUser(String email, String password) throws EtAuthException {
-//        if(email != null) email = email.toLowerCase();
-//        userRepository.
-//        return userRepository.findByEmailAndPassword(email, password);
-//    }
+        @Autowired
+        UserRepository userRepository;
 
     @Override
     public EndUser registerUser(String firstName, String lastName, String email, String password) throws EtAuthException {
@@ -31,12 +25,16 @@ public class UserServiceImpl implements UserService{
        // Integer count = userRepository.getCountByEmail(email); //call method to check emails existence
        // if(count > 0) throw new EtAuthException("Email is already in use"); //throw exception if email exist
         Integer userId = userRepository.create(firstName, lastName, email, password); //creates the user
-        //return userRepository.findById(userId); //return newly created user id
+//        return userRepository.findById(userId); //return newly created user id
         return null;
     }
 
+    //
 //    @Override
-//    public List<EndUser> getAllInfo(){
-//        return userRepository.
+//    public EndUser validateUser(String email, String password) throws EtAuthException {
+//        if(email != null) email = email.toLowerCase();
+//        userRepository.
+//        return userRepository.findByEmailAndPassword(email, password);
 //    }
+
 }
