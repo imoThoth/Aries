@@ -2,11 +2,11 @@ drop database dfp4f6l1hjchmf;
 drop user fcilyucvkvriwf;
 create user fcilyucvkvriwf with password '9f12ae2911d703b831d7cf8193a4720dffa40f0f0051457b95d0dacf57b413ae';
 create database dfp4f6l1hjchmf with template=template0 owner=fcilyucvkvriwf;
-\connect expensetrackerdb;
+\connect dfp4f6l1hjchmf;
 alter default privileges grant all on tables to fcilyucvkvriwf;
 alter default privileges grant all on sequences to fcilyucvkvriwf;
 
-create table ET_USERS(
+create table et_users(
     user_id integer primary key not null,
     first_name varchar(255) not null,
     last_name varchar(255) not null,
@@ -14,17 +14,17 @@ create table ET_USERS(
     password text not null
 );
 
-create table ET_CATEGORIES(
+create table et_categories(
     category_id integer primary key not null,
     user_id integer not null,
     title varchar(255) not null,
     description varchar(255) not null
 );
 
-alter table ET_CATEGORIES add constraint CAT_USERS_FK
-foreign key (USER_ID) references ET_USERS(USER_ID);
+alter table et_categories add constraint cat_users_fk
+foreign key (user_id) references et_users(user_id);
 
-create table ET_TRANSACTIONS(
+create table et_transactions(
     transactions_id integer primary key not null,
     category_id integer not null,
     user_id integer not null,
@@ -33,14 +33,14 @@ create table ET_TRANSACTIONS(
     transaction_date bigint not null
 );
 
-alter table ET_TRANSACTIONS add constraint TRANS_CAT_FK
-foreign key (CATEGORY_ID) references ET_CATEGORIES(CATEGORY_ID);
-alter table ET_TRANSACTIONS add constraint TRANS_USERS_FK
-foreign key (USER_ID) references ET_USERS(USER_ID);
+alter table et_transactions add constraint trans_cat_fk
+foreign key (category_id) references et_categories(category_id);
+alter table et_transactions add constraint trans_users_fk
+foreign key (user_id) references et_users(user_id);
 
-create sequence ET_USERS_SET increment 1 start 1;
-create sequence ET_CATEGORIES_SEQ increment 1 start 1;
-create sequence ET_TRANSACTIONS_SEQ increment 1 start 1000;
+create sequence et_users_seq increment 1 start 1;
+create sequence et_categories_seq increment 1 start 1;
+create sequence et_transactions_seq increment 1 start 1000;
 
 
 
