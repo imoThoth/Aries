@@ -83,7 +83,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public EndUser findById(Integer id) {
-        return jdbcTemplate.queryForObject(SQL_FIND_BY_ID, userRowMapper);
+        return jdbcTemplate.queryForObject(SQL_FIND_BY_ID, new Object[]{id} ,userRowMapper);
     }
 
 
