@@ -64,13 +64,14 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public Integer getCountByEmail(String email) {
-        return jdbcTemplate.queryForObject(SQL_COUNT_BY_EMAIL, new Object[]{email}, Integer.class);
+    public EndUser getCountByEmail(String email) {
+        return jdbcTemplate.queryForObject(SQL_COUNT_BY_EMAIL, userRowMapper);
+                //queryForObject(SQL_COUNT_BY_EMAIL, new Object[]{email}, Integer.class);
     }
 
     @Override
     public EndUser findById(Integer id) {
-        return jdbcTemplate.queryForObject(SQL_FIND_BY_ID, new Object[]{id}, userRowMapper);
+        return jdbcTemplate.queryForObject(SQL_FIND_BY_ID, userRowMapper);
     }
 
 
