@@ -39,7 +39,7 @@ public class UsersController {
         String lastName = (String) userMap.get("lastName");
         String email = (String) userMap.get("email");
         String password = (String) userMap.get("password");
-        Optional<EndUser> user = userService.registerUser(firstName, lastName, email, password);
+        EndUser user = userService.registerUser(firstName, lastName, email, password);
         Map<String, String> map = new HashMap<>();
         map.put("message", "registered succesfully");
         return new ResponseEntity<>(map, HttpStatus.OK);

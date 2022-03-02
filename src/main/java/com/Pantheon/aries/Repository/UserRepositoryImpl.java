@@ -1,13 +1,10 @@
 package com.Pantheon.aries.Repository;
 
 import com.Pantheon.aries.Exceptions.EtAuthException;
-import com.Pantheon.aries.Model.EndUser;
 import org.jasypt.util.password.BasicPasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.data.domain.Example;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
@@ -56,26 +53,6 @@ public abstract class UserRepositoryImpl implements UserRepository {
         }
 //        return (Integer) Objects.requireNonNull(keyHolder.getKeys()).get("USER_ID");
 
-    }
-
-    @Override
-    public <S extends EndUser> S save(S entity) {
-        return null;
-    }
-
-    @Override
-    public List<EndUser> findAll() {
-        return null;
-    }
-
-    @Override
-    public EndUser getById(Integer integer) {
-        return null;
-    }
-
-    @Override
-    public <S extends EndUser> Optional<S> findOne(Example<S> example) {
-        return Optional.empty();
     }
 
 //    @Override

@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
 import java.util.regex.Pattern;
 
 @Service
@@ -25,7 +24,7 @@ public class UserServiceImpl implements UserService{
 //    }
 
     @Override
-    public Optional<EndUser> registerUser(String firstName, String lastName, String email, String password) throws EtAuthException {
+    public EndUser registerUser(String firstName, String lastName, String email, String password) throws EtAuthException {
 
         Pattern pattern = Pattern.compile("^(.+)@(.+)$"); //pattern for email
         if(email != null) email = email.toLowerCase(); //change email to lower case
@@ -33,7 +32,8 @@ public class UserServiceImpl implements UserService{
        // Integer count = userRepository.getCountByEmail(email); //call method to check emails existence
        // if(count > 0) throw new EtAuthException("Email is already in use"); //throw exception if email exist
         Integer userId = userRepository.create(firstName, lastName, email, password); //creates the user
-        return userRepository.findById(userId); //return newly created user id
+        //return userRepository.findById(userId); //return newly created user id
+        return null;
     }
 
 //    @Override
