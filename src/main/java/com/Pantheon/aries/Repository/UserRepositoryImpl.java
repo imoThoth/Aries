@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.Objects;
+import java.util.Optional;
 
 @Repository
 public class UserRepositoryImpl implements UserRepository {
@@ -49,8 +50,7 @@ public class UserRepositoryImpl implements UserRepository {
             }, keyHolder);
             return (Integer) Objects.requireNonNull(keyHolder.getKeys()).get("USER_ID");
         }catch (EmptyResultDataAccessException e) {
-            return null;
-            //throw new EtAuthException("Invalid details. Failed to create account");
+            throw new EtAuthException("Invalid details. Failed to create account");
         }
 //        return (Integer) Objects.requireNonNull(keyHolder.getKeys()).get("USER_ID");
 
@@ -68,12 +68,18 @@ public class UserRepositoryImpl implements UserRepository {
         }
     }
 
-    @Override
-    public Integer getCountByEmail(String email) {
-        return jdbcTemplate.queryForObject(SQL_COUNT_BY_EMAIL, new Object[]{email}, Integer.class);
-//                .queryForObject(SQL_COUNT_BY_EMAIL, userRowMapper);
-                //queryForObject(SQL_COUNT_BY_EMAIL, new Object[]{email}, Integer.class);
-    }
+//    @Override
+//    public Integer getCountByEmail(String email) {
+//        try{
+//            return jdbcTemplate.queryForObject(SQL_COUNT_BY_EMAIL, new Object[] {email}, (rs, rowNum) -> Optional.of(userRowMapper(rs)));
+//        }
+//
+//
+//
+//        //return jdbcTemplate.queryForObject(SQL_COUNT_BY_EMAIL, new Object[]{email}, Integer.class);
+////                .queryForObject(SQL_COUNT_BY_EMAIL, userRowMapper);
+//                //queryForObject(SQL_COUNT_BY_EMAIL, new Object[]{email}, Integer.class);
+//    }
 
     @Override
     public EndUser findById(Integer id) {
@@ -86,4 +92,6 @@ public class UserRepositoryImpl implements UserRepository {
                         rs.getString("LAST_NAME"),
                         rs.getString("EMAIL"),
                     rs.getString("PASSWORD")));
+
+
 }
