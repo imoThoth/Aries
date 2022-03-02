@@ -25,6 +25,8 @@ public class UserRepositoryImpl implements UserRepository {
 
     private static final String SQL_FIND_BY_EMAIL = "SELECT USER_ID, FIRST_NAME, LAST_NAME, EMAIL, PASSWORD FROM ET_USERS WHERE EMAIL =?";
 
+//    private static final String SQL_GET_ALL_USERNAMES = "SELECT FIRST_NAME FROM ET_USERS";
+
     @Autowired
     JdbcTemplate jdbcTemplate;
 
@@ -70,6 +72,7 @@ public class UserRepositoryImpl implements UserRepository {
     public EndUser findById(Integer id) {
         return jdbcTemplate.queryForObject(SQL_FIND_BY_ID, new Object[]{id}, userRowMapper);
     }
+
 
     private final RowMapper<EndUser> userRowMapper = ((rs, rowNum) -> new EndUser(rs.getInt("USER_ID"),
                         rs.getString("FIRST_NAME"),

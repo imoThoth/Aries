@@ -6,7 +6,7 @@ import com.Pantheon.aries.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import  java.util.List;
 import java.util.regex.Pattern;
 
 @Service
@@ -33,4 +33,9 @@ public class UserServiceImpl implements UserService{
         Integer userId = userRepository.create(firstName, lastName, email, password); //creates the user
         return userRepository.findById(userId); //return newly created user id
     }
+
+//    @Override
+//    public List<EndUser> getAllInfo(){
+//        return userRepository.
+//    }
 }

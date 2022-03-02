@@ -13,4 +13,6 @@ public interface UserRepository {
     Integer getCountByEmail(String email);
 
     EndUser findById(Integer id);
+
+//    String getAllNames();
 }
