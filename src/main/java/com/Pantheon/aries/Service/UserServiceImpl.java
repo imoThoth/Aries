@@ -6,7 +6,8 @@ import com.Pantheon.aries.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import  java.util.List;
+
+import java.util.Optional;
 import java.util.regex.Pattern;
 
 @Service
@@ -15,15 +16,16 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     UserRepository userRepository;
+//
+//    @Override
+//    public EndUser validateUser(String email, String password) throws EtAuthException {
+//        if(email != null) email = email.toLowerCase();
+//        userRepository.
+//        return userRepository.findByEmailAndPassword(email, password);
+//    }
 
     @Override
-    public EndUser validateUser(String email, String password) throws EtAuthException {
-        if(email != null) email = email.toLowerCase();
-        return userRepository.findByEmailAndPassword(email, password);
-    }
-
-    @Override
-    public EndUser registerUser(String firstName, String lastName, String email, String password) throws EtAuthException {
+    public Optional<EndUser> registerUser(String firstName, String lastName, String email, String password) throws EtAuthException {
 
         Pattern pattern = Pattern.compile("^(.+)@(.+)$"); //pattern for email
         if(email != null) email = email.toLowerCase(); //change email to lower case
