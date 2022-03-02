@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.util.Objects;
 
 @Repository
 public class UserRepositoryImpl implements UserRepository {
@@ -35,8 +36,9 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public Integer create(String firstName, String lastName, String email, String password) throws EtAuthException {
         String hashedPassword = encryptPassword.encryptPassword(password);
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+
         try {
-            KeyHolder keyHolder = new GeneratedKeyHolder();
             jdbcTemplate.update(connection -> {
                 PreparedStatement ps = connection.prepareStatement(SQL_CREATE, Statement.RETURN_GENERATED_KEYS);
                 ps.setString(1, firstName);
@@ -45,10 +47,13 @@ public class UserRepositoryImpl implements UserRepository {
                 ps.setString(4, hashedPassword);
                 return ps;
             }, keyHolder);
-            return (Integer) keyHolder.getKeys().get("USER_ID");
-        }catch (Exception e) {
-            throw new EtAuthException("Invalid details. Failed to create account");
+            return (Integer) Objects.requireNonNull(keyHolder.getKeys()).get("USER_ID");
+        }catch (EmptyResultDataAccessException e) {
+            return null;
+            //throw new EtAuthException("Invalid details. Failed to create account");
         }
+//        return (Integer) Objects.requireNonNull(keyHolder.getKeys()).get("USER_ID");
+
     }
 
     @Override
