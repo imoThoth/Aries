@@ -1,20 +1,20 @@
 package com.Pantheon.aries.Model;
 
 import javax.persistence.*;
-
-@Entity
-@Table
+//
+//@Entity
+//@Table
 public class EndUser {
 
-    @Id
-    @SequenceGenerator(
-            name = "et_users",
-            sequenceName  = "et_users_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.IDENTITY,
-            generator = "et_users_sequence")
+//    @Id
+//    @SequenceGenerator(
+//            name = "ET_USERS",
+//            sequenceName  = "ET_USERS_sequence",
+//            allocationSize = 1
+//    )
+//    @GeneratedValue(
+//            strategy = GenerationType.IDENTITY,
+//            generator = "ET_USERS_sequence")
     private Integer userId;
     private String firstName;
     private String lastName;
