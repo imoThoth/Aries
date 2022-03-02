@@ -13,8 +13,7 @@ import java.util.regex.Pattern;
 @Transactional
 public class UserServiceImpl implements UserService{
 
-    @Autowired
-    UserRepository userRepository;
+        @Autowired UserRepository userRepository;
 //
 //    @Override
 //    public EndUser validateUser(String email, String password) throws EtAuthException {
