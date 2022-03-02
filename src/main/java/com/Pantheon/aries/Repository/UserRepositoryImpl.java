@@ -17,13 +17,13 @@ import java.sql.Statement;
 @Repository
 public class UserRepositoryImpl implements UserRepository {
 
-    private static final String SQL_CREATE = "INSERT INTO et_users (USER_ID, FIRST_NAME, LAST_NAME, EMAIL, PASSWORD) VALUES (NEXTVAL('et_users_seq'), ?, ?, ?, ?)";
+    private static final String SQL_CREATE = "INSERT INTO dfp4f6l1hjchmf (USER_ID, FIRST_NAME, LAST_NAME, EMAIL, PASSWORD) VALUES (NEXTVAL('et_users_seq'), ?, ?, ?, ?)";
 
-    private static final String SQL_COUNT_BY_EMAIL = "SELECT * FROM et_users WHERE EMAIL =?";
+    private static final String SQL_COUNT_BY_EMAIL = "SELECT * FROM dfp4f6l1hjchmf WHERE EMAIL =?";
 
-    private static final String SQL_FIND_BY_ID = "SELECT USER_ID, FIRST_NAME, LAST_NAME, EMAIL, PASSWORD FROM ET_USERS WHERE USER_ID = ?";
+    private static final String SQL_FIND_BY_ID = "SELECT USER_ID, FIRST_NAME, LAST_NAME, EMAIL, PASSWORD FROM dfp4f6l1hjchmf WHERE USER_ID = ?";
 
-    private static final String SQL_FIND_BY_EMAIL = "SELECT USER_ID, FIRST_NAME, LAST_NAME, EMAIL, PASSWORD FROM ET_USERS WHERE EMAIL =?";
+    private static final String SQL_FIND_BY_EMAIL = "SELECT USER_ID, FIRST_NAME, LAST_NAME, EMAIL, PASSWORD FROM dfp4f6l1hjchmf WHERE EMAIL =?";
 
 //    private static final String SQL_GET_ALL_USERNAMES = "SELECT FIRST_NAME FROM ET_USERS";
 
