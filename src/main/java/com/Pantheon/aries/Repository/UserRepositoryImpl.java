@@ -19,13 +19,13 @@ import java.util.Optional;
 @Repository
 public class UserRepositoryImpl implements UserRepository {
 
-    private static final String SQL_CREATE = "INSERT INTO ET_USERS (USER_ID, FIRST_NAME, LAST_NAME, EMAIL, PASSWORD) VALUES (NEXTVAL('et_users_seq'), ?, ?, ?, ?)";
+    private static final String SQL_CREATE = "INSERT INTO ET_USERS (USER_ID, FIRST_NAME, LAST_NAME, EMAIL, PASSWORD) VALUES (NEXTVAL('et_users_seq'), ?, ?, ?, ?);";
 
-    private static final String SQL_COUNT_BY_EMAIL = "SELECT * FROM ET_USERS WHERE EMAIL =?";
+    private static final String SQL_COUNT_BY_EMAIL = "SELECT * FROM ET_USERS WHERE EMAIL =?;";
 
-    private static final String SQL_FIND_BY_ID = "SELECT * FROM ET_USERS WHERE USER_ID = ?";
+    private static final String SQL_FIND_BY_ID = "SELECT * FROM ET_USERS WHERE USER_ID = ?;";
 
-    private static final String SQL_FIND_BY_EMAIL = "SELECT * FROM ET_USERS WHERE EMAIL = ?";
+    private static final String SQL_FIND_BY_EMAIL = "SELECT * FROM ET_USERS WHERE EMAIL = ?;";
 
 //    private static final String SQL_GET_ALL_USERNAMES = "SELECT FIRST_NAME FROM ET_USERS";
 
