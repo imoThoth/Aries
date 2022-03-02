@@ -28,8 +28,8 @@ public class UserServiceImpl implements UserService{
         Pattern pattern = Pattern.compile("^(.+)@(.+)$"); //pattern for email
         if(email != null) email = email.toLowerCase(); //change email to lower case
         if(!pattern.matcher(email).matches()) throw new EtAuthException("Invalid Email Format"); //check if email matches pattern
-        Integer count = userRepository.getCountByEmail(email); //call method to check emails existence
-        if(count > 0) throw new EtAuthException("Email is already in use"); //throw exception if email exist
+        EndUser count = userRepository.getCountByEmail(email); //call method to check emails existence
+        if(Integer.parseInt(String.valueOf(count)) > 0) throw new EtAuthException("Email is already in use"); //throw exception if email exist
         Integer userId = userRepository.create(firstName, lastName, email, password); //creates the user
         return userRepository.findById(userId); //return newly created user id
     }
